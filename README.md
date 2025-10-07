@@ -95,9 +95,12 @@ ripple uut (
 endmodule
 ```
 # Output Waveform
+![WhatsApp Image 2025-10-03 at 16 00 03_73c8f7b0](https://github.com/user-attachments/assets/9b3fb1d1-a29e-4319-9c1a-a5e31a9eb1fd)
+
 
 # 4 bit Ripple counter using Function
 // 4-bit Ripple Counter using Function
+```verilog
 module ripple_counter_func (
     input clk, rst,
     output reg [3:0] Q
@@ -114,11 +117,35 @@ module ripple_counter_func (
             Q <= count(Q);  // use function to increment
     end
 endmodule
+```
 
 # Test Bench
+```verilog
+module ripple_counter_func_tb;
+    reg clk_t, rst_t;
+    wire [3:0] Q_t;
 
+    ripple_counter_func uut (
+        .clk(clk_t),
+        .rst(rst_t),
+        .Q(Q_t)
+    );
+
+    initial clk_t = 0;
+    always #5 clk_t = ~clk_t;
+
+    initial begin
+        rst_t = 1;
+        #15 
+        rst_t = 0;
+        #100 
+        $finish;
+    end
+endmodule
+```
 
 # Output Waveform 
+![WhatsApp Image 2025-10-07 at 11 19 15_01a0f841](https://github.com/user-attachments/assets/99b567c3-b667-4d54-a8f6-554c233ce8d2)
 
 
 # Conclusion
