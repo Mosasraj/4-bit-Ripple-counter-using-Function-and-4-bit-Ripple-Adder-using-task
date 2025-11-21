@@ -38,7 +38,8 @@ module ripple_adder_task (
         input a, b, cin;
         output s, cout;
         begin
-        ///
+            s    = a ^ b ^ cin;
+            cout = (a & b) | (b & cin) | (a & cin);
         end
     endtask
 
